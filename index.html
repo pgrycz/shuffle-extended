@@ -11,6 +11,24 @@
   </head>
 
   <body>
-    hello world
+    <header id="instructions">
+      <p>Select a line to use as the anagram reference.</p>
+    </header>
+    <main>
+      <div class="line-container">
+        <input type="radio" name="line-select">
+        <input type="text">
+        <span class="missing-letters">missing letters</span>
+        <button onclick="addLine()">add line</button>
+        <button onclick="removeLine()">remove line</button>
+      </div>
+      <div class="line-container">
+        <input type="radio" name="line-select">
+        <input type="text">
+        <span class="missing-letters">missing letters</span>
+        <button onclick="addLine()">add line</button>
+        <button onclick="removeLine()">remove line</button>
+      </div>
+    </main>
   </body>
 </html>
