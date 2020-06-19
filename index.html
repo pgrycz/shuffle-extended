@@ -8,26 +8,23 @@
     <meta name="description" content="...description">
     <meta name="author" content="bnspalding">
 
+    <script src="js/main.js"></script>
   </head>
 
   <body>
     <header id="instructions">
       <p>Select a line to use as the anagram reference.</p>
     </header>
-    <main>
-      <div class="line-container">
-        <input type="radio" name="line-select">
-        <input type="text">
+    <main id="line-array">
+      <div class="line">
+        <input type="radio" name="line-select" class="reference-button"
+           onchange="updateReferenceLine(this)">
+        <input type="text" class="line-text"
+          oninput="checkLine(this)">
         <span class="missing-letters">missing letters</span>
-        <button onclick="addLine()">add line</button>
-        <button onclick="removeLine()">remove line</button>
-      </div>
-      <div class="line-container">
-        <input type="radio" name="line-select">
-        <input type="text">
-        <span class="missing-letters">missing letters</span>
-        <button onclick="addLine()">add line</button>
-        <button onclick="removeLine()">remove line</button>
+        <span class="extra-letters">extra letters</span>
+        <button onclick="addLine(this)">add line</button>
+        <button onclick="removeLine(this)">remove line</button>
       </div>
     </main>
   </body>
