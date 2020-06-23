@@ -24,31 +24,32 @@ function checkLine(element) {
   var myLine = element.parentNode
   var myMissingLetters = myLine.querySelector(".missing-letters");
   var myExtraLetters = myLine.querySelector(".extra-letters");
+  //Case: The reference line is edited
   if (myLine.querySelector(".reference-button").checked) {
     referenceLine = myLine.querySelector(".line-text").value;
     myMissingLetters.innerHTML = "";
     myExtraLetters.innerHTML = "";
-  }
-  for (let line of lineArray) {
-    if (!line.querySelector(".reference-button").checked) {
-      var missingLetters = line.querySelector(".missing-letters");
-      var extraLetters = line.querySelector(".extra-letters");
-      var text = line.querySelector(".line-text").value;
-      var result = compareToReference(text);
-      missingLetters.innerHTML = result.missingLetters;
-      extraLetters.innerHTML = result.extraLetters;
+    for (let line of lineArray) {
+      if (!line.querySelector(".reference-button").checked) {
+        var missingLetters = line.querySelector(".missing-letters");
+        var extraLetters = line.querySelector(".extra-letters");
+        var text = line.querySelector(".line-text").value;
+        var result = compareToReference(text);
+        missingLetters.innerHTML = "- " + result.missingLetters;
+        extraLetters.innerHTML = "+ " + result.extraLetters;
+      }
     }
+  } else { //This line is not the reference line
+    var text = myLine.querySelector(".line-text").value;
+    var result = compareToReference(text);
+    myMissingLetters.innerHTML = "- " + result.missingLetters;
+    myExtraLetters.innerHTML = "+ " + result.extraLetters;
   }
 }
 
-// something is wrong with this. Maybe the text is getting simultaneously
-// updated in multiple spots which is causing inaccuracies. Arrays seem to have
-// different lenghts in different spots.
 function compareToReference(text) {
   var processedText = clean(text).split("").sort();
   var processedRef = clean(referenceLine).split("").sort();
-  console.log(processedText);
-  console.log(processedRef);
 
   return compareLetters(processedText, processedRef);
 }
@@ -60,22 +61,22 @@ function clean(text) {
 function compareLetters(text, reference) {
   var missingLetters = []
   var extraLetters = []
-  text.forEach(function (c) {
-    if (reference.length == 0) {
-      return
-    }
-    while (reference[0] < c) {
+
+  //compare the sorted lists character by character
+  while (reference.length > 0 && text.length > 0) {
+    if (reference[0] < text[0]) { // ref letters not in the text
       missingLetters.push(reference.shift());
-    }
-    if (reference.length == 0) {
-      return
-    }
-    if (c == reference[0]) {
+    } else if (text[0] == reference[0]) { //the letter is in both
       reference.shift();
-    } else {
-      extraLetters.push(c);
+      text.shift();
+    } else if (text[0] < reference[0]) { //text letters not in the ref
+      extraLetters.push(text.shift());
     }
-  });
+  }
+
+  extraLetters = extraLetters.concat(text); //if it's still in the text, it's extra
+  missingLetters = missingLetters.concat(reference); //if it's still in the ref, it's missing
+
   return {
     missingLetters: missingLetters.join(""), 
     extraLetters: extraLetters.join("")

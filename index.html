@@ -8,6 +8,8 @@
     <meta name="description" content="...description">
     <meta name="author" content="bnspalding">
 
+    <link rel="stylesheet" href="css/main.css">
+
     <script src="js/main.js"></script>
   </head>
 
@@ -21,8 +23,8 @@
            onchange="updateReferenceLine(this)">
         <input type="text" class="line-text"
           oninput="checkLine(this)">
-        <span class="missing-letters">missing letters</span>
-        <span class="extra-letters">extra letters</span>
+        <span class="missing-letters">-</span>
+        <span class="extra-letters">+</span>
         <button onclick="addLine(this)">add line</button>
         <button onclick="removeLine(this)">remove line</button>
       </div>
