@@ -13,6 +13,11 @@ function removeLine(element) {
   }
 }
 
+function checkOnStart() {
+ var refLine = document.querySelector('input[name="line-select"]:checked')
+ checkLine(refLine);
+}
+
 function updateReferenceLine(element) {
   var lineText = element.parentNode.querySelector(".line-text")
   referenceLine = lineText.value;

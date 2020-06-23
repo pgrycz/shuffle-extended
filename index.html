@@ -13,15 +13,29 @@
     <script src="js/main.js"></script>
   </head>
 
-  <body>
+  <body onload="checkOnStart()">
     <header id="instructions">
       <p>Select a line to use as the anagram reference.</p>
     </header>
     <main id="line-array">
       <div class="line">
         <input type="radio" name="line-select" class="reference-button"
-           onchange="updateReferenceLine(this)">
+          onchange="updateReferenceLine(this)">
         <input type="text" class="line-text"
+          value="a peony, a nettletree, a waterfall, no king's decree"
+          oninput="checkLine(this)">
+        <span class="missing-letters">-</span>
+        <span class="extra-letters">+</span>
+        <button onclick="addLine(this)">add line</button>
+        <button onclick="removeLine(this)">remove line</button>
+      </div>
+      <div class="line">
+        <input type="radio" name="line-select" class="reference-button"
+           onchange="updateReferenceLine(this)"
+           checked
+           >
+        <input type="text" class="line-text"
+          value="are fortunately pleasantries the golden eagle knew."
           oninput="checkLine(this)">
         <span class="missing-letters">-</span>
         <span class="extra-letters">+</span>
