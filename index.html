@@ -14,28 +14,15 @@
   </head>
 
   <body onload="checkOnStart()">
-    <header id="instructions">
-      <p>Select a line to use as the anagram reference.</p>
-    </header>
     <main id="line-array">
       <div class="line">
         <input type="radio" name="line-select" class="reference-button"
           onchange="updateReferenceLine(this)"
           checked>
-        <input type="text" class="line-text"
-          value="the labyrinth's contours reel and flow, it peels"
+        <textarea class="line-text" cols="70"
+          placeholder="type here or copy content text You want to work on and press 'add' button to duplicate content and to track changes in letters"
           oninput="checkLine(this)">
-        <span class="missing-letters">-</span>
-        <span class="extra-letters">+</span>
-        <button onclick="addLine(this)">add line</button>
-        <button onclick="removeLine(this)">remove line</button>
-      </div>
-      <div class="line">
-        <input type="radio" name="line-select" class="reference-button"
-           onchange="updateReferenceLine(this)">
-        <input type="text" class="line-text"
-          value="as letters rend, fly undone, its abcs a whirlpool."
-          oninput="checkLine(this)">
+        </textarea>
         <span class="missing-letters">-</span>
         <span class="extra-letters">+</span>
         <button onclick="addLine(this)">add line</button>

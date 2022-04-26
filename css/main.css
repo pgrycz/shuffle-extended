@@ -1,3 +1,13 @@
-.line-text {
-  width: 50%;
-}
+* {
+  background: #2a2626;
+  color: #b5abab;
+  }
+  
+  .line-text {
+  font-size: 16pt;
+  outline: 0;
+  border: 0;
+  background: #191919;
+  border-radius: 15pt;
+  padding: 8px;
+  }
