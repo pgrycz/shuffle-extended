@@ -19,10 +19,9 @@
         <input type="radio" name="line-select" class="reference-button"
           onchange="updateReferenceLine(this)"
           checked>
-        <textarea class="line-text" cols="70"
-          placeholder="type here or copy content text You want to work on and press 'add' button to duplicate content and to track changes in letters"
-          oninput="checkLine(this)">
-        </textarea>
+        <textarea class="line-text" cols="80"
+          placeholder="type here or copy content text You want to work on and press 'add line' button to duplicate content and to track changes in letters"
+          oninput="checkLine(this)"></textarea>
         <span class="missing-letters">-</span>
         <span class="extra-letters">+</span>
         <button onclick="addLine(this)">add line</button>
