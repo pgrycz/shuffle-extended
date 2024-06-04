@@ -2,12 +2,34 @@
   background: #2a2626;
   color: #b5abab;
   }
-  
   .line-text {
-  font-size: 16pt;
-  outline: 0;
-  border: 0;
-  background: #191919;
-  border-radius: 15pt;
-  padding: 8px;
+    display: grid;
+  }
+  .line-text::after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+  }
+  .line-text > textarea {
+    resize:  none;
+    overflow: hidden;
+  }
+  .line-text > textarea,
+  .line-text::after {
+    font-size: 16pt;
+    outline: 0;
+    border: 0;
+    background: #191919;
+    border-radius: 15pt;
+    padding: 8px;
+    grid-area: 1 / 1 / 2 / 2;
+    }
+    textarea:focus {
+      outline: none;
+      box-shadow: inset 0 0 2px darkgray;
+    }
+    ::-webkit-resizer {
+      border-radius: 15pt;
+      border: 2px solid #b5abab;
+      outline: 2px solid #b5abab;
   }
