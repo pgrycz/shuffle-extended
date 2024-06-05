@@ -4,6 +4,7 @@
   }
   .line-text {
     display: grid;
+    overflow: hidden;
   }
   .line-text::after {
     content: attr(data-replicated-value) " ";
@@ -28,8 +29,3 @@
       outline: none;
       box-shadow: inset 0 0 2px darkgray;
     }
-    textarea::-webkit-resizer {
-      border-radius: 15pt;
-      border: 5px solid #b5abab;
-      outline: 5px solid #b5abab;
-  }
